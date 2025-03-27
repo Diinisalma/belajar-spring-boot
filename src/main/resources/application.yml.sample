@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: springboot-default
+server:
+  port: 8080
+app:
+  name: Default
+  currency: IDR
