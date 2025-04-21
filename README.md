@@ -28,3 +28,8 @@ npm run watch
 ```bash
 mvn spring-boot:run
 ```
+
+## Build Project
+```bash
+mvn clean package
+```
