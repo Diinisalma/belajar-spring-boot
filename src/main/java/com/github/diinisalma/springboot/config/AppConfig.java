@@ -5,6 +5,9 @@ import java.util.Properties;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 
 import com.github.diinisalma.springboot.Author;
 import com.github.diinisalma.springboot.Book;
@@ -63,4 +66,22 @@ public class AppConfig {
         return new PasswordAuthentication("13b27cfe71dbf5", "7fbcb73ad555ab");
     }
 
+    @Bean
+    public SpringTemplateEngine templateEngine() {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver());
+        templateEngine.addDialect(new LayoutDialect());
+        return templateEngine;
+    }
+
+    @Bean
+    public ClassLoaderTemplateResolver templateResolver() {
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix("templates/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode("HTML");
+        templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setOrder(1);
+        return templateResolver;
+    }
 }
