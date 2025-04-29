@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.diinisalma.springboot.AuthorDTO;
-import com.github.diinisalma.springboot.AuthorService;
+import com.github.diinisalma.springboot.service.impl.AuthorServiceImpl;
 
 @Controller
 @RequestMapping("/authors")
 public class AuthorController {
 
-    private final AuthorService authorService;
+    private final AuthorServiceImpl authorService;
 
-    public AuthorController(AuthorService authorService) {
+    public AuthorController(AuthorServiceImpl authorService) {
         this.authorService = authorService;
     }
 
